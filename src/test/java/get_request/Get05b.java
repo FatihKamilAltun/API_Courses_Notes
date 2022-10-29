@@ -48,6 +48,8 @@ public class Get05b extends ReqresBaseUrl {
 
         response.then().assertThat().statusCode(200).contentType(ContentType.JSON);
 
+        softAssert.assertEquals(response.statusCode(),200);
+        softAssert.assertEquals(response.contentType(),"application/json; charset=utf-8");
         softAssert.assertEquals(jsonPath.getInt("data.id"), 3,"Id degeri dogru degil");
         softAssert.assertEquals(jsonPath.getString("data.name"),"true red","Name degeri dogru degil");
         softAssert.assertEquals(jsonPath.getInt("data.year"),2002,"Year degeri dogru degil");
