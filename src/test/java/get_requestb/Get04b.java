@@ -1,4 +1,4 @@
-package get_request;
+package get_requestb;
 
 import base_url.RestfulBaseUrl;
 import io.restassured.response.Response;
