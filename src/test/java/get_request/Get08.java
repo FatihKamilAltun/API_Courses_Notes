@@ -16,6 +16,10 @@ public class Get08 extends JsonplaceholderBaseUrl {
 
     // De-Serialization : Json datayı java objesine cevirme
     // Serialization    : Java objesini Json formatına cevirme
+    // De-Seralization 2 türlü yapacağız
+    //
+
+
     /*
     Given
        https://jsonplaceholder.typicode.com/todos/2
