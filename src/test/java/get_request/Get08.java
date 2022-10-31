@@ -3,10 +3,10 @@ package get_request;
 import base_url.JsonplaceholderBaseUrl;
 import io.restassured.response.Response;
 import org.junit.Test;
+import test_data.JsonPlaceHolderTestData;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
@@ -63,13 +63,44 @@ public class Get08 extends JsonplaceholderBaseUrl {
         // do assertion
         Map<String, Object> actualData = response.as(HashMap.class); // de-serialization
         System.out.println("Actual data : " + actualData);
+        assertEquals(expectedData.get("userId"), actualData.get("userId"));
+        assertEquals(expectedData.get("id"), actualData.get("id"));
+        assertEquals(expectedData.get("title"), actualData.get("title"));
+        assertEquals(expectedData.get("completed"), actualData.get("completed"));
+        assertEquals("1.1 vegur", response.header("Via"));
+        assertEquals("cloudflare", response.header("Server"));
+        assertEquals(200, response.statusCode());
+
+
+    }
+
+    @Test
+    public void get01b() {
+
+        // Set the Url
+        spec.pathParams("first", "todos", "second", 2);
+
+        // set the expected data ==> payload
+        JsonPlaceHolderTestData objJsonPlace = new JsonPlaceHolderTestData();
+
+        Map<String, Object> expectedData = objJsonPlace.expectedDataMethod(1, "quis ut nam facilis et officia qui", false);
+
+
+
+
+        // send the request and get the response
+        Response response = given().spec(spec).when().get("/{first}/{second}");
+        response.prettyPrint();
+
+        // do assertion
+        Map<String, Object> actualData = response.as(HashMap.class); // de-serialization
+        System.out.println("Actual data : " + actualData);
         assertEquals(expectedData.get("userId"),actualData.get("userId"));
-        assertEquals(expectedData.get("id"),actualData.get("id"));
         assertEquals(expectedData.get("title"),actualData.get("title"));
         assertEquals(expectedData.get("completed"),actualData.get("completed"));
-        assertEquals("1.1 vegur",response.header("Via"));
-        assertEquals("cloudflare",response.header("Server"));
-        assertEquals(200,response.statusCode());
+        assertEquals("1.1 vegur", response.header("Via"));
+        assertEquals("cloudflare", response.header("Server"));
+        assertEquals(200, response.statusCode());
 
 
     }
