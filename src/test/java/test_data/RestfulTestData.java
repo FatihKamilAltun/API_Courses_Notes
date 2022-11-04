@@ -2,7 +2,6 @@ package test_data;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.SimpleTimeZone;
 
 public class RestfulTestData {
 
@@ -15,7 +14,7 @@ public class RestfulTestData {
         return bookingDatesMap;
     }
 
-    public Map<String,Object> expectedData(String firstname, String lastname, Integer totalprice, Boolean depositpaid, Map<String,String > bookingdates){
+    public Map<String,Object> expectedDataMethod(String firstname, String lastname, Integer totalprice, Boolean depositpaid, Map<String,String > bookingdates){
 
         Map<String, Object> expectedDataMap=new HashMap<>();
         expectedDataMap.put("firstname",firstname);
