@@ -38,7 +38,7 @@ public class Get13Pojo extends GorestBaseUrl {
 
         // Set the expected data
         GoRestDataPojo goRestDataPojo = new GoRestDataPojo(2508, "Rajinder Acharya", "rajinder_acharya@mosciski.net", "female", "active");
-        GoRestPojo goRestPojo = new GoRestPojo(null, goRestDataPojo);
+        GoRestPojo expectedData = new GoRestPojo(null, goRestDataPojo);
 
         // Send the request and get the response
         Response response = given().spec(spec).when().get("/{first}/{second}");
@@ -46,7 +46,13 @@ public class Get13Pojo extends GorestBaseUrl {
 
         // Do assertion
         GoRestPojo actualData = response.as(GoRestPojo.class);
-
+        assertEquals(200,response.statusCode());
+        assertEquals(expectedData.getMeta(),actualData.getMeta());
+        assertEquals(expectedData.getData().getId(),actualData.getData().getId());
+        assertEquals(expectedData.getData().getName(),actualData.getData().getName());
+        assertEquals(expectedData.getData().getEmail(),actualData.getData().getEmail());
+        assertEquals(expectedData.getData().getGender(),actualData.getData().getGender());
+        assertEquals(expectedData.getData().getStatus(),actualData.getData().getStatus());
 
 
 
