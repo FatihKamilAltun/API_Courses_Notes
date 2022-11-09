@@ -1,12 +1,15 @@
 package pojos;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class JsonPlaceHolderPojo {
 
     private Integer userId;
     private String title;
-    private String completed;
+    private Boolean completed;
 
-    public JsonPlaceHolderPojo(Integer userId, String title, String completed) {
+    public JsonPlaceHolderPojo(Integer userId, String title, Boolean completed) {
         this.userId = userId;
         this.title = title;
         this.completed = completed;
@@ -31,11 +34,11 @@ public class JsonPlaceHolderPojo {
         this.title = title;
     }
 
-    public String getCompleted() {
+    public Boolean getCompleted() {
         return completed;
     }
 
-    public void setCompleted(String completed) {
+    public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
 
