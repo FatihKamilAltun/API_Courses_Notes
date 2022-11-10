@@ -12,7 +12,7 @@ public class ObjectMapperUtils {
         mapper = new ObjectMapper();
     }
 
-    public static <T> T convertToJava(String json, Class<T> cls) {
+    public static <T> T convertJsonToJava(String json, Class<T> cls) {
 
         T javaResult = null;
 

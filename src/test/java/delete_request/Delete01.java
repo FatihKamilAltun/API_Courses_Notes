@@ -36,7 +36,7 @@ public class Delete01 extends JsonplaceholderBaseUrl {
         response.prettyPrint();
 
         //Do Assertion
-        Map actualData = ObjectMapperUtils.convertToJava(response.asString(), HashMap.class);
+        Map actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), HashMap.class);
 
         assertEquals(200,response.getStatusCode());
 

@@ -34,14 +34,14 @@ public class Get14ObjectMapper_Map extends JsonplaceholderBaseUrl {
 
         // Set the expected data
         String expectedDataInString = new JsonPlaceHolderTestData().expectedDataInString(10, "quis eius est sint explicabo", true);
-        Map expectedData = ObjectMapperUtils.convertToJava(expectedDataInString, Map.class);
+        Map expectedData = ObjectMapperUtils.convertJsonToJava(expectedDataInString, Map.class);
 
         // Send the request and get the response
         Response response = given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
 
         // Do assertion
-        Map actualData = ObjectMapperUtils.convertToJava(response.asString(), Map.class);
+        Map actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), Map.class);
 
         assertEquals(200,response.getStatusCode());
         assertEquals(expectedData.get("userId"),actualData.get("userId"));

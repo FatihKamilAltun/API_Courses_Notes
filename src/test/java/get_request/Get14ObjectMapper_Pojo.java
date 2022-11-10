@@ -40,7 +40,7 @@ public class Get14ObjectMapper_Pojo extends JsonplaceholderBaseUrl {
         response.prettyPrint();
 
         // Do assertion
-        JsonPlaceHolderPojo actualData = ObjectMapperUtils.convertToJava(response.asString(), JsonPlaceHolderPojo.class);
+        JsonPlaceHolderPojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), JsonPlaceHolderPojo.class);
 
         assertEquals(200,response.getStatusCode());
         assertEquals(expectedData.getUserId(),actualData.getUserId());
